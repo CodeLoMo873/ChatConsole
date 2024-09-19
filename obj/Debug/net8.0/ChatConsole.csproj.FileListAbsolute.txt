@@ -1,0 +1,14 @@
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\bin\Debug\net8.0\ChatConsole.exe
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\bin\Debug\net8.0\ChatConsole.deps.json
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\bin\Debug\net8.0\ChatConsole.runtimeconfig.json
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\bin\Debug\net8.0\ChatConsole.dll
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\bin\Debug\net8.0\ChatConsole.pdb
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.AssemblyInfoInputs.cache
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.AssemblyInfo.cs
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.csproj.CoreCompileInputs.cache
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.dll
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\refint\ChatConsole.dll
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.pdb
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ChatConsole.genruntimeconfig.cache
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\obj\Debug\net8.0\ref\ChatConsole.dll

@@ -1,0 +1,120 @@
+﻿@{
+    Layout = "";
+}
+@using Newtonsoft.Json;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Messenger - Pro</title>
+    @* <link rel="stylesheet" href="main.css"> *@
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script>
+        var userID = @Html.Raw(JsonConvert.SerializeObject(ViewBag.UserID));
+        var friendName = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Friend_Name));
+        var friendAvatar = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Friend_Avatar));
+        var lastMessage = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Last_Message));
+        var relationshipID = @Html.Raw(JsonConvert.SerializeObject(ViewBag.RelationshipID));
+    </script>
+
+</head>
+
+<body>
+<div class="sidebar">
+    <div style="margin:10px">
+        <div class="sidebar-image" style="float:left ;background-image: url(@ViewBag.Avatar);"></div>        
+        <div>
+            <div class="sidebar-name"> @ViewBag.Name</div>
+            <i class="fa-solid fa-gear"></i>
+        </div>      
+    </div>    
+    <div class="Search" style="margin: 5px;">
+        <input type="text" placeholder="Search" style="width: 183px">
+        <button style="width:90px">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+
+    <!--Icon tùy chọn chức năng-->
+    <div>
+        <button class="icon">
+            <i class="fa-brands fa-rocketchat"></i>
+        </button>
+        <button class="icon">
+            <i class="fa-solid fa-phone-volume"></i>
+        </button>
+        <button class="icon">
+            <i class="fa-solid fa-video"></i>
+        </button>
+        <button class="icon">
+            <i class="fa-solid fa-user-group"></i>
+        </button>
+    </div>
+
+    <div class="option">
+        <select name="combo1">
+            <option value="" disabled selected>Video Call</option>
+            <option value="option1">Create Room</option>
+            <option value="option2">Join Room</option>
+        </select>
+        <select name="combo2">
+            <option value="" disabled selected>New Chat</option>
+            <option value="option1">New Message</option>
+            <option value="option2">Create Group</option>
+        </select>
+    </div>
+    <div style="padding: 5px; font-size:20px; text-align: center; font-weight: bold;">
+        MY CONTACTS
+    </div>
+
+        <div class="contact-list">
+            <div id="contactList" class="contact-item"></div>
+        </div>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+
+    <div>
+        <form method="post" action="/Chat/Logout">
+            <button type="submit" style="height:30px ; width:300px">LogOut</button>
+        </form>
+    </div>
+</div>
+
+    <div class="chat-section">
+        <div class="chat-header" id="chatHeader">
+            <div id="chat-header-image" class="chat-header-image" , style="float:left; background-image: url('/image/@ViewBag.Friend_Avatar[0]')"></div>
+            <div id="chat-header-name" class="chat-header">@ViewBag.Friend_Name[0]</div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message received">
+                <div class="message-image" , style="background-image: url('/image/@ViewBag.Friend_Avatar[0]')"></div>
+                <div class="content">Hello! How can I help you?</div>
+            </div>
+            <div class="message sent">
+                <div class="content">Hi! I need some assistance with my order.</div>
+            </div>
+        </div>
+        <div class="chat-input" style="margin: 10px;">
+            <input type="text" placeholder="Type a message...">
+            <button>
+                <i class="fa-solid fa-face-laugh"></i>
+            </button>
+            <button>
+                <i class="fa-solid fa-file"></i>
+            </button>
+            <button>
+                <i class="fa-solid fa-microphone-lines"></i>
+            </button>
+            <button style="width: 60px;">
+                <i class="fa-regular fa-paper-plane"></i>
+            </button>
+        </div>
+        
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
