@@ -86,20 +86,20 @@
 
     <div class="chat-section">
         <div class="chat-header" id="chatHeader">
-            <div id="chat-header-image" class="chat-header-image" , style="float:left; background-image: url('/image/@ViewBag.Friend_Avatar[0]')"></div>
-            <div id="chat-header-name" class="chat-header">@ViewBag.Friend_Name[0]</div>
+            <div id="chat-header-image" class="chat-header-image" , style="float:left; background-image: url()"></div>
+            <div id="chat-header-name" class="chat-header">Chào mừng bạn! @ViewBag.Name</div>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message received">
+            @* <div class="message received">
                 <div class="message-image" , style="background-image: url('/image/@ViewBag.Friend_Avatar[0]')"></div>
                 <div class="content">Hello! How can I help you?</div>
             </div>
             <div class="message sent">
                 <div class="content">Hi! I need some assistance with my order.</div>
-            </div>
+            </div> *@
         </div>
         <div class="chat-input" style="margin: 10px;">
-            <input type="text" placeholder="Type a message...">
+            <input type="text" placeholder="Type a message..." id="TypingMessage">
             <button>
                 <i class="fa-solid fa-face-laugh"></i>
             </button>
@@ -109,7 +109,7 @@
             <button>
                 <i class="fa-solid fa-microphone-lines"></i>
             </button>
-            <button style="width: 60px;">
+            <button style="width: 60px;" id="SendMessage" onclick="sendMessage()">
                 <i class="fa-regular fa-paper-plane"></i>
             </button>
         </div>

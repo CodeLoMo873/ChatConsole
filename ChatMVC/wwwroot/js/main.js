@@ -1,4 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿let currentRelationshipID;
+document.addEventListener('DOMContentLoaded', function () {
     var userList = document.getElementById('contactList');
     for (let i = 0; i < friendName.length; i++) {  // Sử dụng let thay cho var
 
@@ -31,7 +32,7 @@
         // Đảm bảo rằng giá trị relationshipID[i] được lưu trữ đúng trong mỗi sự kiện click
         contactDiv.addEventListener('click', function () {
             var contactIndex = this.dataset.index;
-
+            currentRelationshipID = relationshipID[contactIndex];
             $.ajax({
                 type: "GET",
                 url: '/chat/RelationShip', // Thêm contactIndex vào URL
@@ -50,21 +51,13 @@
 function showChat(index, data) {
     var chatHeaderName = document.getElementById('chat-header-name');
     var chatHeaderImage = document.getElementById('chat-header-image');
-
-    // Cập nhật tiêu đề và ảnh đại diện trong phần chat header
     chatHeaderName.textContent = friendName[index];
     chatHeaderImage.style.backgroundImage = "url('/image/" + friendAvatar[index] + "')";
-
-    // Xóa toàn bộ nội dung của phần tử có ID 'chatMessages' (nếu muốn xóa tin nhắn cũ)
     var chatMessages = document.getElementById('chatMessages');
     chatMessages.innerHTML = '';
-
-    // Hàm để tạo và thêm tin nhắn vào phần tử chatMessages
     function addMessage(isReceived, contentText, imageUrl) {
         var message = document.createElement('div');
         message.classList.add('message');
-
-        // Thêm class 'received' hoặc 'sent'
         if (isReceived) {
             message.classList.add('received');
             var messageImage = document.createElement('div');
@@ -74,17 +67,12 @@ function showChat(index, data) {
         } else {
             message.classList.add('sent');
         }
-
-        // Tạo nội dung tin nhắn
         var content = document.createElement('div');
         content.classList.add('content');
         content.textContent = contentText;
         message.appendChild(content);
-
-        // Thêm tin nhắn vào phần tử 'chatMessages'
         chatMessages.appendChild(message);
     }
-    debugger;
 
     for (var i = 0; i < data.message.count; i++) {
         if (data.message.authorID[i] == userID) {
@@ -95,6 +83,52 @@ function showChat(index, data) {
         }
     }
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+
+    var TypingMessage = document.getElementById('TypingMessage');
+    TypingMessage.addEventListener('click', function () {
+        sendMessage(); 
+    });
 }
+
+function sendMessage() {
+    var TypingMessage = document.getElementById('TypingMessage');
+    if (TypingMessage.value != '') {
+        function addMessage(contentText) {
+            var message = document.createElement('div');
+            message.classList.add('message');
+
+            message.classList.add('sent');
+            var content = document.createElement('div');
+            content.classList.add('content');
+            content.textContent = contentText;
+            message.appendChild(content);
+            chatMessages.appendChild(message);
+        }
+        addMessage(TypingMessage.value);
+        $.ajax({
+            type: "POST",
+            url: '/chat/Addmessage', 
+            data: {
+                content_message: TypingMessage.value,
+                relationship_id: currentRelationshipID,
+                userid: userID
+            },   
+            success: function (response) {
+                console.log("Message sent successfully:", response);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error sending message:", error);
+            }
+        });
+        TypingMessage.value = ''; 
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    }
+    else {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+}
+
 
 

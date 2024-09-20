@@ -10,6 +10,7 @@ namespace ChatMVC.Controllers
     public class ChatController : Controller
     {
         private readonly ILogger<ChatController> _logger;
+        private int _UserID=0;
 
         public ChatController(ILogger<ChatController> logger)
         {
@@ -18,6 +19,7 @@ namespace ChatMVC.Controllers
 
         public IActionResult Index(string user = "", int id = 0)
         {
+            _UserID = id;
             AccountInfoModel info = new AccountInfoModel();
             ViewBag.UserID = id;
             info.UserID = id;
@@ -48,7 +50,17 @@ namespace ChatMVC.Controllers
             ListMessageBll message = new ListMessageBll();
             var ms = message.ListMessage(ListMessage);
             return Json(new { Message = ms });
-
+        }
+        public void AddMessage(int relationship_id, string content_message, int userid)
+        {
+            AddMessageModel addModel = new AddMessageModel()
+            {
+                RelationshipID = relationship_id,
+                Content = content_message,
+                AuthorID = userid,
+            };
+            AddMessageBll add = new AddMessageBll();
+            add.AddMessage(addModel);
         }
         public IActionResult Logout()
         {

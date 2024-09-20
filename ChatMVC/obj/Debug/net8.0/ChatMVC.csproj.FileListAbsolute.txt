@@ -52,3 +52,4 @@ C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\ChatMVC\obj\Debug\net8.0\ChatMV
 C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\ChatMVC\obj\Debug\net8.0\ChatMVC.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\ChatMVC\obj\Debug\net8.0\ChatMVC.csproj.Up2Date
 C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\ChatMVC\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\NGUYEN DUC DAO\source\repos\ChatConsole\ChatMVC\obj\Debug\net8.0\ChatMVC.sourcelink.json
